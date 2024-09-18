@@ -1,4 +1,4 @@
-# tests/test_extract_frames.py
+# tests/test_video_processing.py
 
 import unittest
 from pathlib import Path

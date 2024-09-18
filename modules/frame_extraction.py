@@ -1,3 +1,5 @@
+# modules/frame_extraction.py
+
 from pathlib import Path
 import cv2
 import logging
