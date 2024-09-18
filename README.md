@@ -1,5 +1,29 @@
 # Crowd Size Estimation Using YOLOv8: Project Overview and Reflections
 
+## Possible Approaches Considered
+
+1. **Background Subtraction + Blob Detection**
+   - **Approach:** Use background subtraction to isolate moving individuals and apply blob detection to identify groups or individuals.
+   - **Pros:** Simple to implement with libraries like OpenCV; effective with high contrast between crowd and background.
+   - **Cons:** Struggles with dynamic backgrounds and overlapping individuals; requires careful parameter tuning.
+
+2. **Object Detection with Pretrained Models (e.g., YOLO, SSD)**
+   - **Approach:** Utilize pretrained deep learning models to detect and count people in frames.
+   - **Pros:** High accuracy and handles partial occlusions well.
+   - **Cons:** Demands significant computational resources; may need fine-tuning for aerial or drone footage.
+
+3. **Crowd Density Estimation (Regression-Based Methods)**
+   - **Approach:** Use models trained to estimate crowd density based on pixel density.
+   - **Pros:** Effective in very dense crowds where individual detection is challenging.
+   - **Cons:** Requires specialized models and labeled data; complex implementation.
+
+4. **Optical Flow**
+   - **Approach:** Track movement vectors to estimate the number of moving people.
+   - **Pros:** Good for tracking large movements and identifying motion patterns.
+   - **Cons:** Ineffective for stationary individuals; sensitive to camera motion, especially with drones.
+
+## Ended Up Choosing YOLO
+
 ## Project Workflow
 
 The project was structured into several modular components to ensure scalability and maintainability:
