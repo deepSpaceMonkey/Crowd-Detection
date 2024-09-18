@@ -1,30 +1,42 @@
 import logging
 from pathlib import Path
 from video_preperation import prepare_video
+from frame_extraction import extract_specific_frames
 
 # Configure logging for the main script
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 
-def test_video_prep():
-    # Define the test parameters
+def process_video():
+    # Define the video processing parameters
     input_filename = "droneFootageCrowd_full.mp4"
-    output_filename = "droneFootage_trimmed.mp4"
+    trimmed_filename = "droneFootage_trimmed.mp4"
     start_time = "00:00:14"
     end_time = "00:00:32"
 
-    # Define the output path
+    # Define the paths
     script_dir = Path(__file__).resolve().parent
-    output_path = script_dir / output_filename
+    input_path = script_dir / input_filename
+    trimmed_path = script_dir / trimmed_filename
 
-    success = prepare_video(input_filename, str(output_path), start_time, end_time)
+    # Trim the video
+    logging.info("Starting video trimming...")
+    success = prepare_video(input_filename, str(trimmed_path), start_time, end_time)
 
-    # Check if the process was successful and log the appropriate message
     if success:
-        logging.info(f"Video has been successfully trimmed and saved to {output_path}.")
+        logging.info(f"Video has been successfully trimmed and saved to {trimmed_path}.")
     else:
         logging.error("There was an issue processing the video.")
+        return  # Exit if video processing failed
+
+    # Define the timestamps for frame extraction
+    timestamps = [0, 13]  # Start and 13 seconds
+
+    # Extract frames
+    logging.info("Starting frame extraction...")
+    frames = extract_specific_frames(str(trimmed_path), timestamps)
 
 
 if __name__ == "__main__":
-    test_video_prep()
+    process_video()
+    logging.info("Done.")
