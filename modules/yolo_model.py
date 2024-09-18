@@ -2,6 +2,8 @@
 
 from ultralytics import YOLO
 import logging
+import torch
+
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 

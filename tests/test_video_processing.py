@@ -6,7 +6,7 @@ import cv2
 import logging
 
 # Import the functions to be tested
-from modules.video_preperation import prepare_video
+from modules.video_preparation import prepare_video
 from modules.frame_extraction import extract_specific_frames
 
 # Configure logging for the tests
