@@ -6,8 +6,8 @@ import cv2
 import logging
 
 # Import the functions to be tested
-from video_preperation import prepare_video
-from frame_extraction import extract_specific_frames
+from modules.video_preperation import prepare_video
+from modules.frame_extraction import extract_specific_frames
 
 # Configure logging for the tests
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -22,8 +22,8 @@ class TestExtractFrames(unittest.TestCase):
         """
         # Define project directories and filenames
         cls.script_dir = Path(__file__).resolve().parent.parent  # Assuming tests/ is inside the project directory
-        cls.input_filename = "droneFootageCrowd_full.mp4"
-        cls.trimmed_filename = "droneFootage_trimmed_test_extract.mp4"
+        cls.input_filename = "resources/droneFootageCrowd_full.mp4"
+        cls.trimmed_filename = "resources/droneFootage_trimmed_test_extract.mp4"
         cls.trimmed_path = cls.script_dir / cls.trimmed_filename
         cls.frames_dir = cls.script_dir / "frames"
 

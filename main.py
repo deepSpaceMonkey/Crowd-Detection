@@ -1,16 +1,15 @@
 import logging
 from pathlib import Path
-from video_preperation import prepare_video
-from frame_extraction import extract_specific_frames
+from modules.video_preperation import prepare_video
+from modules.frame_extraction import extract_specific_frames
 
-# Configure logging for the main script
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 
 def process_video():
     # Define the video processing parameters
-    input_filename = "droneFootageCrowd_full.mp4"
-    trimmed_filename = "droneFootage_trimmed.mp4"
+    input_filename = "resources/droneFootageCrowd_full.mp4"
+    trimmed_filename = "resources/droneFootage_trimmed.mp4"
     start_time = "00:00:14"
     end_time = "00:00:32"
 
