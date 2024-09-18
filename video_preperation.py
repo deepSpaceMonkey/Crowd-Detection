@@ -33,12 +33,15 @@ def prepare_video(input_filename, output_path, start_time, end_time):
 
     command = [
         'ffmpeg',
-        '-i', input_path,
+        '-y',  # Overwrite file if exists
         '-ss', start_time,
         '-to', end_time,
+        '-i', str(input_path),
         '-an',  # Remove audio
-        '-c', 'copy',
-        output_path
+        '-c:v', 'libx264',  # Re-encode video using H.264 codec to avoid black screen
+        '-crf', '23',
+        '-preset', 'medium',
+        str(output_path)
     ]
 
     try:
